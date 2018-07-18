@@ -12,13 +12,13 @@
 // ----------------------------------------------------------------------------------
 date_default_timezone_set('UTC');
 
-require './convertir_bd.php';
-require './set_author.php';
-require './set_article.php';
-require './set_tag.php';
-require './set_keywords.php';
-require './set_logo.php';
-require './set_docs.php';
+require './src/convertir_bd.php';
+require './src/set_author.php';
+require './src/set_article.php';
+require './src/set_tag.php';
+require './src/set_keywords.php';
+require './src/set_logo.php';
+require './src/set_docs.php';
 require './spip2wp.php';
 
 // Variables de paramètrage général
