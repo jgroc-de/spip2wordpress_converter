@@ -8,6 +8,7 @@
 //
 // Modifications :
 // - 2014-09-06 Mathieu MD : Compatible Spip 3.0.17 (et testé vers Wordpress 4.0)
+// - 2018-07-19 jgroc-de : Compatible Spip 3.0.X (et testé vers Wordpress 4.9)
 //
 // ----------------------------------------------------------------------------------
 date_default_timezone_set('UTC');
