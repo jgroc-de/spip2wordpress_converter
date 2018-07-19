@@ -26,15 +26,21 @@ function spip2wp(array $param)
     foreach ($articles as $article)
     {
         //echo 'spip article :';
-        //print_r($article);
+        // LES IMAGES
+        $article = set_image($article, $param, $db); 
+        print_r($article);
+
         // LES AUTEURS, ON SUPPOSE QU'IL N'Y EN A QU'UN PAR ARTICLE
         $postauteur = set_author($article, $param, $db);
 
         // MIGRER L'ARTICLE
         $idpost = set_article($article, $param, $db, $postauteur);
         
+        // SET IMG POSTMETA, doesnt work
+        //set_postmeta($article, $param, $db, $idpost); 
+        
         // Le Tag pour la rubrique
-        set_tag($article, $param, $db);
+        set_tag($article, $param, $db, $idpost);
         
         // LES MOTS CLES
         set_keywords($article, $param, $db);

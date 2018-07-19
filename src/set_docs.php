@@ -27,6 +27,8 @@ function set_docs($article, $param, $db, $idpost)
     $docs = select_docs($article, $db);
     foreach ($docs as $doc)
     {
+        echo 'doc: ';
+        print_r($doc);
         $ligneL = search($doc, $param, $db);
         $idpostL = $ligneL['post_id'];
         if ($idpostL > 0)

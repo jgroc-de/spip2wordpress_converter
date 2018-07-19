@@ -7,15 +7,15 @@ function wp_terms(array $param, array $db, string $id_rubrique)
     return $result->fetch();
 }
 
-function set_tag($article, $param, $db)
+function set_tag($article, $param, $db, $idpost)
 {
     //est-ce que la catégorie existe déjà?
     $titre_rubrique = convertir_bd($article['titrerub']);
     $id_rubrique = $article['id_rubrique'];
 
     $wp_terms = wp_terms($param, $db, $id_rubrique);
+    echo 'tag: ';
     print_r($wp_terms);
-    return ;
     $wp_term = $wp_terms['term_id'];
     if ($wp_terms['slug'] == $id_rubrique)
     {

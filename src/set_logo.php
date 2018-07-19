@@ -38,6 +38,8 @@ function set_logo($article, $param, $db, $idpost)
 {
     //est-ce que le postmeta existe (a été importé avec Add From Server)
     $postmeta = select_postmeta($param, $article,$db);
+    echo 'logo: ';
+    print_r($postmeta);
     $idpostL = $postmeta['post_id'];
     if ($idpostL > 0)
     {

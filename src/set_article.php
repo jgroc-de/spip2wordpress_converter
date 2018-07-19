@@ -37,14 +37,20 @@ function wp_post($param, $article, $db, $postauteur)
         $post_type = "page";
     else
         $post_type = "post";
-    print_r($postdate);
     if ($postdate == '0000-00-00 00:00:00')
-        $postdate = '2000-01-01 00:00:00';
+    {
+        if ($date != '0000-00-00 00:00:00')
+            $postdate = $date;
+        else
+            $postdate = '2000-01-01 00:00:00';
+    }
     $request = $db['wp']->prepare("
         INSERT INTO ".$param['wp']['prefix']."posts (
             post_author,
             post_title,
+            post_excerpt,
             post_status,
+            comment_status,
             post_name,
             guid,
             post_content,
@@ -53,15 +59,16 @@ function wp_post($param, $article, $db, $postauteur)
             post_type,
             post_modified,
             post_modified_gmt,
-            post_excerpt,
             to_ping,
             pinged,
             post_content_filtered)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
     $request->execute(array(
         $postauteur,
         $titre,
+        $chapo,
         $status,
+        'closed',
         $titre,
         $codeart,
         $content,
@@ -70,7 +77,6 @@ function wp_post($param, $article, $db, $postauteur)
         $post_type,
         $date,
         $date,
-        $chapo,
         '',
         '',
         '')
@@ -85,7 +91,7 @@ function set_article(array $article, array $param, array $db, int $postauteur)
     $wp_article = wp_article($param, $article, $db);
     $wp_posts_ID = $wp_article['ID'];
     $wp_post = wp_post($param, $article, $db, $postauteur);
-    print_r($article);
-    print_r($wp_post);
+//    print_r($article);
+//    print_r($wp_post);
     return $wp_post['ID'];
 }

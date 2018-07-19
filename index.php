@@ -12,15 +12,26 @@
 //
 // ----------------------------------------------------------------------------------
 date_default_timezone_set('UTC');
+define('ABSPATH', '/home/user/wp/wordpress');
+define('WPINC', 'wp-includes');
 
 require './src/convertir_bd.php';
 require './src/set_author.php';
 require './src/set_article.php';
-require './src/set_tag.php';
+require './src/set_docs.php';
+require './src/set_image.php';
 require './src/set_keywords.php';
 require './src/set_logo.php';
-require './src/set_docs.php';
+require './src/set_postmeta.php';
+require './src/set_tag.php';
 require './spip2wp.php';
+
+/*require '../wp-includes/functions.php';
+require '../wp-includes/post.php';
+require '../wp-includes/plugin.php';
+require '../wp-includes/load.php';
+require '../wp-includes/cache.php';
+require '../wp-admin/includes/image.php';*/
 
 // Variables de paramètrage général
 $param = array();
@@ -37,6 +48,8 @@ $param['wp'] = array(
     'password' => "root00",
     'prefix' => "wp_");
 
+//url du site final
+$param['url'] = 'http://localhost:8080';
 //liste des rubriques à exclure de l'importation
 //$param['rub_exclure'] = "42";
 $param['rub_exclure'] = "";

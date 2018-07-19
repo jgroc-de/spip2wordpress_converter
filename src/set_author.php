@@ -19,6 +19,7 @@ function add_wp_user($author, $param, $db)
 {
     $name = convertir_bd($author['nom']);
     $email = '';
+    print_r($author);
     if (array_key_exists('email', $author))
         $email = $author['email'];
     //$date = "2018-07-16 10:06:50";
@@ -40,6 +41,7 @@ function wp_author($author, $param, $db)
 function set_author(array $article, array $param, array $db)
 {
     $author = author($article, $db);
+    print_r($author);
     if (!wp_user($param, $db, $author))
     {
         echo 'unknow';

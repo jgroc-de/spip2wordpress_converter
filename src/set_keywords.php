@@ -60,6 +60,8 @@ function set_keywords(array $article, array $param, array $db)
     print_r($links);
     foreach ($links as $link)
     {
+        echo 'link: ';
+        print_r($link);
         //est-ce que le mot existe déjà?
         $id_rubrique = $link['id_mot'];
         $titre_rubrique = convertir_bd($link['titre']);
